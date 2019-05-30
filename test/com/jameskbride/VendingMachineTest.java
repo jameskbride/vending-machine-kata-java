@@ -39,4 +39,13 @@ public class VendingMachineTest {
 
         assertEquals("$0.25", vendingMachine.display());
     }
+
+    @Test
+    public void givenMultipleCoinsItDisplaysTheTotal() {
+        vendingMachine.insertCoin(VendingMachine.NICKEL);
+        vendingMachine.insertCoin(VendingMachine.DIME);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+
+        assertEquals("$0.40", vendingMachine.display());
+    }
 }
