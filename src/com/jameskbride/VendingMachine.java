@@ -10,11 +10,13 @@ public class VendingMachine {
     public static final String DIME = "DIME";
     public static final String QUARTER = "QUARTER";
     private final CoinRegister coinRegister;
+    private final Display display;
 
     private Map<String, Double> coinMap;
     private List<String> coinReturn;
 
     public VendingMachine() {
+        this.display = new Display();
         this.coinRegister = new CoinRegister();
         coinReturn = new ArrayList<>();
         initializeCoinMap();
@@ -29,10 +31,10 @@ public class VendingMachine {
 
     public String display() {
         if (coinRegister.getTotal() > 0) {
-            return String.format("$%.2f", coinRegister.getTotal());
+            return display.formatAmount(coinRegister.getTotal());
         }
 
-        return "INSERT COIN";
+        return display.emptyMessage();
     }
 
     public void insertCoin(String coin) {
