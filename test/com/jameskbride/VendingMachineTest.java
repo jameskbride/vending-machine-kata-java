@@ -1,15 +1,28 @@
 package com.jameskbride;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class VendingMachineTest {
 
+    private VendingMachine vendingMachine;
+
+    @Before
+    public void setUp() {
+        vendingMachine = new VendingMachine();
+    }
+
     @Test
     public void givenNoCoinsAreInsertedThenItDisplaysINSERT_COIN() {
-        VendingMachine vendingMachine = new VendingMachine();
-
         assertEquals("INSERT COIN", vendingMachine.display());
+    }
+
+    @Test
+    public void givenANickelItDisplaysFiveCents() {
+        vendingMachine.insertCoin("NICKEL");
+
+        assertEquals("$0.05", vendingMachine.display());
     }
 }
