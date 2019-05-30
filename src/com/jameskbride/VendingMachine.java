@@ -1,7 +1,21 @@
 package com.jameskbride;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class VendingMachine {
     private double total;
+    private Map<String, Double> coinMap;
+
+    public VendingMachine() {
+        initializeCoinMap();
+    }
+
+    private void initializeCoinMap() {
+        coinMap = new HashMap<>();
+        coinMap.put("NICKEL", 0.05);
+        coinMap.put("DIME", 0.10);
+    }
 
     public String display() {
 
@@ -13,6 +27,8 @@ public class VendingMachine {
     }
 
     public void insertCoin(String coin) {
-        this.total = 0.05;
+        if (coinMap.containsKey(coin)) {
+            this.total =+ coinMap.get(coin);
+        }
     }
 }

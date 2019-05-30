@@ -25,4 +25,11 @@ public class VendingMachineTest {
 
         assertEquals("$0.05", vendingMachine.display());
     }
+
+    @Test
+    public void givenADimeItDisplaysTenCents() {
+        vendingMachine.insertCoin("DIME");
+
+        assertEquals("$0.10", vendingMachine.display());
+    }
 }
