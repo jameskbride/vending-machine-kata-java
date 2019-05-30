@@ -39,12 +39,13 @@ public class VendingMachine {
     public void insertCoin(String coin) {
         if (coinMap.containsKey(coin)) {
             this.total = total + coinMap.get(coin);
+            return;
         }
+
+        coinReturn.add(coin);
     }
 
     public List<String> coinReturn() {
-        coinReturn.add("wooden nickel");
-
         return coinReturn;
     }
 }

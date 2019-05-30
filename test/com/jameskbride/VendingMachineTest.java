@@ -3,6 +3,9 @@ package com.jameskbride;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -73,5 +76,18 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(INVALID_COIN);
 
         assertTrue(vendingMachine.coinReturn().contains(INVALID_COIN));
+    }
+
+    @Test
+    public void givenMultipleInvalidCoinsThenTheCoinsArePlacedInTheCoinReturn() {
+        String differentCoin = "different coin";
+        vendingMachine.insertCoin(differentCoin);
+        vendingMachine.insertCoin(INVALID_COIN);
+
+        List<String> invalidCoins = new ArrayList<>();
+        invalidCoins.add(INVALID_COIN);
+        invalidCoins.add(differentCoin);
+
+        assertTrue(vendingMachine.coinReturn().containsAll(invalidCoins));
     }
 }
