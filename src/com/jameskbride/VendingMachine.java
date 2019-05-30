@@ -9,6 +9,7 @@ public class VendingMachine {
     public static final String NICKEL = "NICKEL";
     public static final String DIME = "DIME";
     public static final String QUARTER = "QUARTER";
+
     private final CoinRegister coinRegister;
     private final Display display;
 
@@ -30,16 +31,13 @@ public class VendingMachine {
     }
 
     public String display() {
-        if (coinRegister.getTotal() > 0) {
-            return display.formatAmount(coinRegister.getTotal());
-        }
-
-        return display.emptyMessage();
+        return display.displayFormattedAmount();
     }
 
     public void insertCoin(String coin) {
         if (coinMap.containsKey(coin)) {
             coinRegister.addValue(coinMap.get(coin));
+            display.setRequestedAmount(coinRegister.getTotal());
             return;
         }
 
@@ -48,5 +46,9 @@ public class VendingMachine {
 
     public List<String> coinReturn() {
         return coinReturn;
+    }
+
+    public void vend(String chips) {
+        display.setRequestedAmount(0.75);
     }
 }

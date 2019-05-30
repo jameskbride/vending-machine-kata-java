@@ -90,4 +90,11 @@ public class VendingMachineTest {
 
         assertTrue(vendingMachine.coinReturn().containsAll(invalidCoins));
     }
+
+    @Test
+    public void givenInsufficentFundsWhenChipsAreRequestedThenDisplayTheAmountForChips() {
+        vendingMachine.vend("CHIPS");
+
+        assertEquals("$0.75", vendingMachine.display());
+    }
 }
