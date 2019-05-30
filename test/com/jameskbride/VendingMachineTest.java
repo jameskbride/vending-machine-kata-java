@@ -7,6 +7,8 @@ import static org.junit.Assert.assertEquals;
 
 public class VendingMachineTest {
 
+    private static final String INVALID_COIN = "wooden nickel";
+    
     private VendingMachine vendingMachine;
 
     @Before
@@ -47,5 +49,21 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(VendingMachine.QUARTER);
 
         assertEquals("$0.40", vendingMachine.display());
+    }
+
+    @Test
+    public void givenAnInvalidCoinHasBeenInsertedThenItDisplaysINSERT_COIN() {
+        vendingMachine.insertCoin(INVALID_COIN);
+
+        assertEquals("INSERT COIN", vendingMachine.display());
+    }
+
+    @Test
+    public void givenValidCoinsAreInsertedWhenAnInvalidCoinIsInsertedThenTheTotalIsNotUpdated() {
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+
+        vendingMachine.insertCoin(INVALID_COIN);
+
+        assertEquals("$0.25", vendingMachine.display());
     }
 }
