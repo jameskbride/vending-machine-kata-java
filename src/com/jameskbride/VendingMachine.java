@@ -15,6 +15,7 @@ public class VendingMachine {
         coinMap = new HashMap<>();
         coinMap.put("NICKEL", 0.05);
         coinMap.put("DIME", 0.10);
+        coinMap.put("QUARTER", 0.25);
     }
 
     public String display() {
