@@ -9,13 +9,13 @@ public class VendingMachine {
     public static final String NICKEL = "NICKEL";
     public static final String DIME = "DIME";
     public static final String QUARTER = "QUARTER";
+    private final CoinRegister coinRegister;
 
-    private double total;
     private Map<String, Double> coinMap;
     private List<String> coinReturn;
 
     public VendingMachine() {
-        total = 0;
+        this.coinRegister = new CoinRegister();
         coinReturn = new ArrayList<>();
         initializeCoinMap();
     }
@@ -28,9 +28,8 @@ public class VendingMachine {
     }
 
     public String display() {
-
-        if (total > 0) {
-            return String.format("$%.2f", total);
+        if (coinRegister.getTotal() > 0) {
+            return String.format("$%.2f", coinRegister.getTotal());
         }
 
         return "INSERT COIN";
@@ -38,7 +37,7 @@ public class VendingMachine {
 
     public void insertCoin(String coin) {
         if (coinMap.containsKey(coin)) {
-            this.total = total + coinMap.get(coin);
+            coinRegister.addValue(coinMap.get(coin));
             return;
         }
 
