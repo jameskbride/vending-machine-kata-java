@@ -92,9 +92,20 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void givenInsufficentFundsWhenChipsAreRequestedThenDisplayTheAmountForChips() {
+    public void givenInsufficientFundsWhenChipsAreRequestedThenDisplayTheAmountForChips() {
         vendingMachine.vend("CHIPS");
 
         assertEquals("$0.75", vendingMachine.display());
+    }
+
+    @Test
+    public void givenSufficientFundsWhenChipsAreRequestedThenItDisplaysINSERT_COIN() {
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+
+        vendingMachine.vend("CHIPS");
+
+        assertEquals("INSERT COIN", vendingMachine.display());
     }
 }
