@@ -4,11 +4,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class VendingMachineTest {
 
     private static final String INVALID_COIN = "wooden nickel";
-    
+
     private VendingMachine vendingMachine;
 
     @Before
@@ -65,5 +66,12 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(INVALID_COIN);
 
         assertEquals("$0.25", vendingMachine.display());
+    }
+
+    @Test
+    public void givenAnInvalidCoinThenTheCoinIsPlacedInTheCoinReturn() {
+        vendingMachine.insertCoin(INVALID_COIN);
+
+        assertTrue(vendingMachine.coinReturn().contains(INVALID_COIN));
     }
 }

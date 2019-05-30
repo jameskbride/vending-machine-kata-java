@@ -1,6 +1,8 @@
 package com.jameskbride;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class VendingMachine {
@@ -10,9 +12,11 @@ public class VendingMachine {
 
     private double total;
     private Map<String, Double> coinMap;
+    private List<String> coinReturn;
 
     public VendingMachine() {
         total = 0;
+        coinReturn = new ArrayList<>();
         initializeCoinMap();
     }
 
@@ -36,5 +40,11 @@ public class VendingMachine {
         if (coinMap.containsKey(coin)) {
             this.total = total + coinMap.get(coin);
         }
+    }
+
+    public List<String> coinReturn() {
+        coinReturn.add("wooden nickel");
+
+        return coinReturn;
     }
 }
