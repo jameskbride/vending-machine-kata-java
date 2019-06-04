@@ -127,4 +127,13 @@ public class VendingMachineTest {
 
         assertEquals("INSERT COIN", vendingMachine.display());
     }
+
+    @Test
+    public void givenInsufficientFundsAndTheDisplayHasBeenCheckedWhenTheDisplayIsCheckedAgainThenItDisplaysTheCurrentAmount() {
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+
+        vendingMachine.display();
+
+        assertEquals("$0.25", vendingMachine.display());
+    }
 }
