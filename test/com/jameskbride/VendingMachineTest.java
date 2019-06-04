@@ -108,4 +108,16 @@ public class VendingMachineTest {
 
         assertEquals("THANK YOU", vendingMachine.display());
     }
+
+    @Test
+    public void givenSufficientFundsAndTheDisplayHasBeenCheckedWhenChipsAreRequestedThenItDisplaysINSERT_COIN() {
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+
+        vendingMachine.vend("CHIPS");
+        vendingMachine.display();
+
+        assertEquals("INSERT COIN", vendingMachine.display());
+    }
 }

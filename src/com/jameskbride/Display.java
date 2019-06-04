@@ -31,6 +31,7 @@ public class Display {
 
     private String formatForThankYou(String formatAmount) {
         if(thankYou) {
+            this.thankYou = false;
             return "THANK YOU";
         }
 
