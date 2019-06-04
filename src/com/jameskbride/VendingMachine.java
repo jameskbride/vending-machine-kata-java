@@ -49,10 +49,11 @@ public class VendingMachine {
     }
 
     public void vend(String chips) {
-        if (coinRegister.getTotal() == 0.75) {
+        if (coinRegister.getTotal() >= 0.50) {
             display.setRequestedAmount(0);
             return;
         }
-        display.setRequestedAmount(0.75);
+        display.setInsufficientFunds(true);
+        display.setRequestedAmount(0.50);
     }
 }

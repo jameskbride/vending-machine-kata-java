@@ -34,4 +34,13 @@ public class DisplayTest {
         assertEquals("INSERT COIN", display.displayFormattedAmount());
     }
 
+    @Test
+    public void givenInsufficientFundsHasBeenSetWhenTheRequestedAmountIsDisplayedThenItDisplaysPriceWithTheFormattedMessage() {
+        display.setInsufficientFunds(true);
+
+        display.setRequestedAmount(0.50);
+
+        assertEquals("PRICE $0.50", display.displayFormattedAmount());
+    }
+
 }
