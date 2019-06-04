@@ -3,6 +3,7 @@ package com.jameskbride;
 public class Display {
     private double requestedAmount;
     private boolean insufficientFunds;
+    private boolean thankYou;
 
     public String emptyMessage() {
         return "INSERT COIN";
@@ -17,11 +18,23 @@ public class Display {
     }
 
     public String displayFormattedAmount() {
+        String message = "";
+
         if (requestedAmount > 0) {
-            return formatForInsufficientFunds(formatAmount(this.requestedAmount));
+            message = formatForInsufficientFunds(formatAmount(this.requestedAmount));
+        } else {
+            message = emptyMessage();
         }
 
-        return emptyMessage();
+        return formatForThankYou(message);
+    }
+
+    private String formatForThankYou(String formatAmount) {
+        if(thankYou) {
+            return "THANK YOU";
+        }
+
+        return formatAmount;
     }
 
     private String formatForInsufficientFunds(String formatAmount) {
@@ -33,6 +46,10 @@ public class Display {
     }
 
     public void setInsufficientFunds(boolean insufficientFunds) {
-        this.insufficientFunds = true;
+        this.insufficientFunds = insufficientFunds;
+    }
+
+    public void setThankYou(boolean thankYou) {
+        this.thankYou = thankYou;
     }
 }

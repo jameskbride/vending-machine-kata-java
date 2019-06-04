@@ -10,6 +10,8 @@ public class VendingMachine {
     public static final String DIME = "DIME";
     public static final String QUARTER = "QUARTER";
 
+    public static final double CHIPS_COST = 0.50;
+
     private final CoinRegister coinRegister;
     private final Display display;
 
@@ -49,11 +51,12 @@ public class VendingMachine {
     }
 
     public void vend(String chips) {
-        if (coinRegister.getTotal() >= 0.50) {
+        if (coinRegister.getTotal() >= CHIPS_COST) {
+            display.setThankYou(true);
             display.setRequestedAmount(0);
             return;
         }
         display.setInsufficientFunds(true);
-        display.setRequestedAmount(0.50);
+        display.setRequestedAmount(CHIPS_COST);
     }
 }

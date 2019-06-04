@@ -99,13 +99,13 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void givenSufficientFundsWhenChipsAreRequestedThenItDisplaysINSERT_COIN() {
+    public void givenSufficientFundsWhenChipsAreRequestedThenItDisplaysTHANK_YOU() {
         vendingMachine.insertCoin(VendingMachine.QUARTER);
         vendingMachine.insertCoin(VendingMachine.QUARTER);
         vendingMachine.insertCoin(VendingMachine.QUARTER);
 
         vendingMachine.vend("CHIPS");
 
-        assertEquals("INSERT COIN", vendingMachine.display());
+        assertEquals("THANK YOU", vendingMachine.display());
     }
 }

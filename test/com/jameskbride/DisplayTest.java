@@ -35,12 +35,21 @@ public class DisplayTest {
     }
 
     @Test
-    public void givenInsufficientFundsHasBeenSetWhenTheRequestedAmountIsDisplayedThenItDisplaysPriceWithTheFormattedMessage() {
+    public void givenInsufficientFundsHasBeenSetWhenTheFormattedAmountIsDisplayedThenItDisplaysPriceWithTheFormattedMessage() {
         display.setInsufficientFunds(true);
 
         display.setRequestedAmount(0.50);
 
         assertEquals("PRICE $0.50", display.displayFormattedAmount());
+    }
+
+    @Test
+    public void givenThankYouHasBeenSetWhenTheRequestedAmountIsDisplayedThenItDisplaysThankYou() {
+        display.setThankYou(true);
+
+        display.setRequestedAmount(0.50);
+
+        assertEquals("THANK YOU", display.displayFormattedAmount());
     }
 
 }
