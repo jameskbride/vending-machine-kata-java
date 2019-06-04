@@ -92,6 +92,13 @@ public class VendingMachineTest {
     }
 
     @Test
+    public void givenInsufficientFundsWhenColaIsRequestedThenDisplayTheAmountForCola() {
+        vendingMachine.vend("COLA");
+
+        assertEquals("PRICE $1.00", vendingMachine.display());
+    }
+
+    @Test
     public void givenInsufficientFundsWhenChipsAreRequestedThenDisplayTheAmountForChips() {
         vendingMachine.vend("CHIPS");
 

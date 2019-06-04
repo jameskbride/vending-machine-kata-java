@@ -10,19 +10,26 @@ public class VendingMachine {
     public static final String DIME = "DIME";
     public static final String QUARTER = "QUARTER";
 
-    public static final double CHIPS_COST = 0.50;
-
     private final CoinRegister coinRegister;
     private final Display display;
 
     private Map<String, Double> coinMap;
     private List<String> coinReturn;
 
+    private Map<String,Double> productMap;
+
     public VendingMachine() {
         this.display = new Display();
         this.coinRegister = new CoinRegister();
         coinReturn = new ArrayList<>();
         initializeCoinMap();
+        initializeProductMap();
+    }
+
+    private void initializeProductMap() {
+        productMap = new HashMap<>();
+        productMap.put("CHIPS", 0.50);
+        productMap.put("COLA", 1.00);
     }
 
     private void initializeCoinMap() {
@@ -51,12 +58,13 @@ public class VendingMachine {
     }
 
     public void vend(String chips) {
-        if (coinRegister.getTotal() >= CHIPS_COST) {
+        Double productCost = productMap.get(chips);
+        if (coinRegister.getTotal() >= productCost) {
             display.setThankYou(true);
             display.setRequestedAmount(0);
             return;
         }
         display.setInsufficientFunds(true);
-        display.setRequestedAmount(CHIPS_COST);
+        display.setRequestedAmount(productCost);
     }
 }
