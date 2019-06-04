@@ -1,0 +1,23 @@
+package com.jameskbride;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ProductInventory {
+
+    private Map<String,Double> productMap;
+
+    public ProductInventory() {
+        initializeProductMap();
+    }
+
+    private void initializeProductMap() {
+        productMap = new HashMap<>();
+        productMap.put("CHIPS", 0.50);
+        productMap.put("COLA", 1.00);
+    }
+
+    public Double getProductCost(String product) {
+        return productMap.get(product);
+    }
+}
