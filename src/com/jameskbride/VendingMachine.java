@@ -1,6 +1,5 @@
 package com.jameskbride;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class VendingMachine implements CoinAware {
@@ -8,14 +7,13 @@ public class VendingMachine implements CoinAware {
     private final CoinRegister coinRegister;
     private final Display display;
     private final ProductInventory productInventory;
-
-    private List<String> coinReturn;
+    private final CoinReturn coinReturn;
 
     public VendingMachine() {
         this.display = new Display();
         this.coinRegister = new CoinRegister();
         this.productInventory = new ProductInventory();
-        coinReturn = new ArrayList<>();
+        coinReturn = new CoinReturn();
     }
 
     public String display() {
@@ -33,12 +31,12 @@ public class VendingMachine implements CoinAware {
     }
 
     public List<String> coinReturn() {
-        return coinReturn;
+        return coinReturn.getReturnedCoins();
     }
 
     public void vend(String chips) {
         Double productCost = productInventory.getProductCost(chips);
-        if (coinRegister.getTotal() >= productCost) {
+        if (coinRegister.hasSufficientFunds(productCost)) {
             display.setThankYou(true);
             display.setRequestedAmount(0);
             return;

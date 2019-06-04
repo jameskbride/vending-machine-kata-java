@@ -31,4 +31,8 @@ public class CoinRegister implements CoinAware {
     public boolean isValidCoin(String coin) {
         return coinMap.containsKey(coin);
     }
+
+    public boolean hasSufficientFunds(Double productCost) {
+        return total >= productCost;
+    }
 }
