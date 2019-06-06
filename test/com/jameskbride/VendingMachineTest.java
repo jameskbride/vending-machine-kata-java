@@ -166,4 +166,15 @@ public class VendingMachineTest {
 
         assertEquals("INSERT COIN", vendingMachine.display());
     }
+
+    @Test
+    public void givenSufficentFundsWhenAProductIsVendedThenAnyExtraMoneyIsDepositedIntoTheCoinReturn() {
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+
+        vendingMachine.vend("CANDY");
+
+        assertTrue(vendingMachine.coinReturn().contains(VendingMachine.DIME));
+    }
 }

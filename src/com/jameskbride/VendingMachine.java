@@ -39,6 +39,7 @@ public class VendingMachine implements CoinAware {
         if (coinRegister.hasSufficientFunds(productCost)) {
             display.setThankYou(true);
             display.setRequestedAmount(0);
+            coinReturn.add(VendingMachine.DIME);
             return;
         }
         display.setInsufficientFunds(true);
