@@ -143,4 +143,27 @@ public class VendingMachineTest {
 
         assertEquals("PRICE $0.65", vendingMachine.display());
     }
+
+    @Test
+    public void givenSufficientFundsWhenCandyIsRequestedThenItDisplaysTHANK_YOU() {
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+
+        vendingMachine.vend("CANDY");
+
+        assertEquals("THANK YOU", vendingMachine.display());
+    }
+
+    @Test
+    public void givenSufficientFundsAndTheDisplayHasBeenCheckedWhenCandyAreRequestedThenItDisplaysINSERT_COIN() {
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+
+        vendingMachine.vend("CANDY");
+        vendingMachine.display();
+
+        assertEquals("INSERT COIN", vendingMachine.display());
+    }
 }
