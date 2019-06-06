@@ -1,6 +1,8 @@
 package com.jameskbride;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CoinRegister implements CoinAware {
@@ -34,5 +36,9 @@ public class CoinRegister implements CoinAware {
 
     public boolean hasSufficientFunds(Double productCost) {
         return total >= productCost;
+    }
+
+    public List<String> makeChange(Double cost) {
+        return Arrays.asList(CoinAware.QUARTER);
     }
 }

@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -168,7 +169,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void givenSufficentFundsWhenAProductIsVendedThenAnyExtraMoneyIsDepositedIntoTheCoinReturn() {
+    public void givenSufficientFundsWhenAProductIsVendedThenAnyExtraMoneyIsDepositedIntoTheCoinReturn() {
         vendingMachine.insertCoin(VendingMachine.QUARTER);
         vendingMachine.insertCoin(VendingMachine.QUARTER);
         vendingMachine.insertCoin(VendingMachine.QUARTER);
@@ -176,5 +177,17 @@ public class VendingMachineTest {
         vendingMachine.vend("CANDY");
 
         assertTrue(vendingMachine.coinReturn().contains(VendingMachine.DIME));
+    }
+
+    @Test
+    public void givenMoreThanEnoughFundsWhenAProductIsVendedThenMultipleCoinsAreDepositedIntoTheCoinReturn() {
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(VendingMachine.QUARTER);
+
+        vendingMachine.vend("CHIPS");
+
+        assertTrue(vendingMachine.coinReturn().containsAll(Arrays.asList(VendingMachine.QUARTER, VendingMachine.QUARTER)));
     }
 }
