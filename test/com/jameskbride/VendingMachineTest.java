@@ -136,4 +136,11 @@ public class VendingMachineTest {
 
         assertEquals("$0.25", vendingMachine.display());
     }
+
+    @Test
+    public void givenInsufficientFundsWhenCandyIsRequestedThenDisplayTheAmountForCandy() {
+        vendingMachine.vend("CANDY");
+
+        assertEquals("PRICE $0.65", vendingMachine.display());
+    }
 }

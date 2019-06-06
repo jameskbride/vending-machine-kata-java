@@ -15,6 +15,7 @@ public class ProductInventory {
         productMap = new HashMap<>();
         productMap.put("CHIPS", 0.50);
         productMap.put("COLA", 1.00);
+        productMap.put("CANDY", 0.65);
     }
 
     public Double getProductCost(String product) {
