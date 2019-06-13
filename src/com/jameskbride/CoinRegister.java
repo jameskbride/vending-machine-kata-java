@@ -1,9 +1,8 @@
 package com.jameskbride;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static com.jameskbride.CoinAware.*;
 
 public class CoinRegister implements CoinAware {
 
@@ -39,6 +38,26 @@ public class CoinRegister implements CoinAware {
     }
 
     public List<String> makeChange(Double cost) {
-        return Arrays.asList(CoinAware.QUARTER);
+        int change = (int) ((total % cost) * 100);
+        List<String> quarters = new ArrayList<>();
+        List<String> dimes = new ArrayList<>();
+        int remainingChange = change;
+        if (remainingChange > 0) {
+            while(remainingChange >= 25) {
+                quarters.add(QUARTER);
+                remainingChange -= 25;
+            }
+
+            while(remainingChange >= 10) {
+                dimes.add(DIME);
+                remainingChange -= 10;
+            }
+        }
+
+        List<String> allCoins = new ArrayList<>();
+        allCoins.addAll(quarters);
+        allCoins.addAll(dimes);
+
+        return allCoins;
     }
 }

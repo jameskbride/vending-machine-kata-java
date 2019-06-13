@@ -3,6 +3,7 @@ package com.jameskbride;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -28,4 +29,16 @@ public class CoinRegisterTest {
         assertEquals(CoinAware.QUARTER, change.get(0));
     }
 
+    @Test
+    public void givenMoreThanEnoughMoneyInTheRegisterWhenChangeIs35CentsItReturnsAQuarterAndADime() {
+        coinRegister.addValue(CoinAware.QUARTER);
+        coinRegister.addValue(CoinAware.QUARTER);
+        coinRegister.addValue(CoinAware.QUARTER);
+        coinRegister.addValue(CoinAware.DIME);
+
+        List<String> change = coinRegister.makeChange(0.50);
+
+        assertEquals(2, change.size());
+        assertTrue(change.containsAll(Arrays.asList(CoinAware.QUARTER, CoinAware.DIME)));
+    }
 }
