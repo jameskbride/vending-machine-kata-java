@@ -38,7 +38,7 @@ public class CoinRegister implements CoinAware {
     }
 
     public List<String> makeChange(Double cost) {
-        int change = (int) ((total % cost) * 100);
+        int change = (int) ((total - cost) * 100);
         List<String> quarters = new ArrayList<>();
         List<String> dimes = new ArrayList<>();
         int remainingChange = change;
