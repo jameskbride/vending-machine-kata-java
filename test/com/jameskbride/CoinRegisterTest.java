@@ -19,6 +19,15 @@ public class CoinRegisterTest {
     }
 
     @Test
+    public void givenTheSameAmountOfMoneyInTheRegisterWhenChangeIsMadeThenItDoesNotReturnCoins() {
+        coinRegister.addValue(NICKEL);
+
+        List<String> change = coinRegister.makeChange(0.05);
+
+        assertEquals(0, change.size());
+    }
+
+    @Test
     public void givenMoreThanEnoughMoneyInTheRegisterWhenChangeIs25CentsIsMadeThenItReturnsAQuarter() {
         coinRegister.addValue(QUARTER);
         coinRegister.addValue(QUARTER);
