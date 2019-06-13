@@ -38,33 +38,28 @@ public class CoinRegister implements CoinAware {
     }
 
     public List<String> makeChange(Double cost) {
-        int change = (int) (Math.ceil((total - cost) * 100));
-        List<String> quarters = new ArrayList<>();
-        List<String> dimes = new ArrayList<>();
-        List<String> nickels = new ArrayList<>();
+        final int change = calculateChange(cost);
+        List<String> allCoins = new ArrayList<>();
         int remainingChange = change;
-        if (remainingChange > 0) {
-            while(remainingChange >= 25) {
-                quarters.add(QUARTER);
-                remainingChange -= 25;
-            }
-
-            while(remainingChange >= 10) {
-                dimes.add(DIME);
-                remainingChange -= 10;
-            }
-
-            while(remainingChange >= 5) {
-                nickels.add(NICKEL);
-                remainingChange -= 5;
-            }
+        while(remainingChange >= 25) {
+            allCoins.add(QUARTER);
+            remainingChange -= 25;
         }
 
-        List<String> allCoins = new ArrayList<>();
-        allCoins.addAll(quarters);
-        allCoins.addAll(dimes);
-        allCoins.addAll(nickels);
+        while(remainingChange >= 10) {
+            allCoins.add(DIME);
+            remainingChange -= 10;
+        }
+
+        while(remainingChange >= 5) {
+            allCoins.add(NICKEL);
+            remainingChange -= 5;
+        }
 
         return allCoins;
+    }
+
+    private int calculateChange(Double cost) {
+        return (int) (Math.ceil((total - cost) * 100));
     }
 }
