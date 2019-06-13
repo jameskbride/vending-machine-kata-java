@@ -62,15 +62,16 @@ public class CoinRegisterTest {
     }
 
     @Test
-    public void givenMoreThanEnoughMoneyInTheRegisterWhenChangeIs35CentsItReturnsAQuarterAndADime() {
+    public void givenMoreThanEnoughMoneyInTheRegisterWhenChangeIs35CentsItReturnsMultipleCoins() {
         coinRegister.addValue(QUARTER);
         coinRegister.addValue(QUARTER);
         coinRegister.addValue(QUARTER);
         coinRegister.addValue(DIME);
+        coinRegister.addValue(NICKEL);
 
         List<String> change = coinRegister.makeChange(0.50);
 
-        assertEquals(2, change.size());
-        assertTrue(change.containsAll(Arrays.asList(QUARTER, DIME)));
+        assertEquals(3, change.size());
+        assertTrue(change.containsAll(Arrays.asList(QUARTER, DIME, NICKEL)));
     }
 }
