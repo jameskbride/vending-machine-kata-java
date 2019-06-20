@@ -17,4 +17,8 @@ public class CoinReturn {
     public List<String> getReturnedCoins() {
         return returnedCoins;
     }
+
+    public void clear() {
+        this.returnedCoins.clear();
+    }
 }

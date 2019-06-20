@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.jameskbride.VendingMachine.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -49,9 +50,9 @@ public class VendingMachineTest {
 
     @Test
     public void givenMultipleCoinsItDisplaysTheTotal() {
-        vendingMachine.insertCoin(VendingMachine.NICKEL);
-        vendingMachine.insertCoin(VendingMachine.DIME);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(NICKEL);
+        vendingMachine.insertCoin(DIME);
+        vendingMachine.insertCoin(QUARTER);
 
         assertEquals("$0.40", vendingMachine.display());
     }
@@ -65,7 +66,7 @@ public class VendingMachineTest {
 
     @Test
     public void givenValidCoinsAreInsertedWhenAnInvalidCoinIsInsertedThenTheTotalIsNotUpdated() {
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(QUARTER);
 
         vendingMachine.insertCoin(INVALID_COIN);
 
@@ -108,9 +109,9 @@ public class VendingMachineTest {
 
     @Test
     public void givenSufficientFundsWhenChipsAreRequestedThenItDisplaysTHANK_YOU() {
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
 
         vendingMachine.vend("CHIPS");
 
@@ -119,9 +120,9 @@ public class VendingMachineTest {
 
     @Test
     public void givenSufficientFundsAndTheDisplayHasBeenCheckedWhenChipsAreRequestedThenItDisplaysINSERT_COIN() {
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
 
         vendingMachine.vend("CHIPS");
         vendingMachine.display();
@@ -131,7 +132,7 @@ public class VendingMachineTest {
 
     @Test
     public void givenInsufficientFundsAndTheDisplayHasBeenCheckedWhenTheDisplayIsCheckedAgainThenItDisplaysTheCurrentAmount() {
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(QUARTER);
 
         vendingMachine.display();
 
@@ -147,9 +148,9 @@ public class VendingMachineTest {
 
     @Test
     public void givenSufficientFundsWhenCandyIsRequestedThenItDisplaysTHANK_YOU() {
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
 
         vendingMachine.vend("CANDY");
 
@@ -158,9 +159,9 @@ public class VendingMachineTest {
 
     @Test
     public void givenSufficientFundsAndTheDisplayHasBeenCheckedWhenCandyAreRequestedThenItDisplaysINSERT_COIN() {
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
 
         vendingMachine.vend("CANDY");
         vendingMachine.display();
@@ -170,24 +171,34 @@ public class VendingMachineTest {
 
     @Test
     public void givenSufficientFundsWhenAProductIsVendedThenAnyExtraMoneyIsDepositedIntoTheCoinReturn() {
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
 
         vendingMachine.vend("CANDY");
 
-        assertTrue(vendingMachine.coinReturn().contains(VendingMachine.DIME));
+        assertTrue(vendingMachine.coinReturn().contains(DIME));
     }
 
     @Test
     public void givenMoreThanEnoughFundsWhenAProductIsVendedThenMultipleCoinsAreDepositedIntoTheCoinReturn() {
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
-        vendingMachine.insertCoin(VendingMachine.QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(QUARTER);
 
         vendingMachine.vend("CHIPS");
 
-        assertTrue(vendingMachine.coinReturn().containsAll(Arrays.asList(VendingMachine.QUARTER, VendingMachine.QUARTER)));
+        assertTrue(vendingMachine.coinReturn().containsAll(Arrays.asList(QUARTER, QUARTER)));
+    }
+
+    @Test
+    public void givenCoinsInTheCoinReturnWhenTheReturnCoinsButtonIsPressedThenTheCoinReturnIsCleared() {
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(INVALID_COIN);
+
+        vendingMachine.returnCoins();
+
+        assertTrue(vendingMachine.coinReturn().isEmpty());
     }
 }

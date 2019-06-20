@@ -48,4 +48,10 @@ public class VendingMachine implements CoinAware {
         display.setInsufficientFunds(true);
         display.setRequestedAmount(productCost);
     }
+
+    public List<String> returnCoins() {
+        coinReturn.clear();
+
+        return null;
+    }
 }
