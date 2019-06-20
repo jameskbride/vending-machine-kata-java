@@ -201,4 +201,14 @@ public class VendingMachineTest {
 
         assertTrue(vendingMachine.coinReturn().containsAll(Arrays.asList(QUARTER, INVALID_COIN)));
     }
+
+    @Test
+    public void givenCoinsInTheRegisterWhenTheReturnCoinsButtonIsPressedThenThenINSERT_COINSIsDisplayed() {
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(INVALID_COIN);
+
+        vendingMachine.returnCoins();
+
+        assertEquals("INSERT COIN", vendingMachine.display());
+    }
 }

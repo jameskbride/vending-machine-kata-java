@@ -46,9 +46,8 @@ public class VendingMachine implements CoinAware {
         display.setRequestedAmount(productCost);
     }
 
-    public List<String> returnCoins() {
+    public void returnCoins() {
         coinReturn.addAll(coinRegister.returnCoins());
-
-        return null;
+        display.setRequestedAmount(0);
     }
 }
