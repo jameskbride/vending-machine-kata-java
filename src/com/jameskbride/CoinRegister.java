@@ -68,6 +68,7 @@ public class CoinRegister implements CoinAware {
     }
 
     public List<String> returnCoins() {
+        this.total = 0;
         return insertedCoins;
     }
 }
