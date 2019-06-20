@@ -50,7 +50,7 @@ public class VendingMachine implements CoinAware {
     }
 
     public List<String> returnCoins() {
-        coinReturn.clear();
+        coinReturn.addAll(coinRegister.returnCoins());
 
         return null;
     }

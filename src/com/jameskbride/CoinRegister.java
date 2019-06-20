@@ -1,17 +1,20 @@
 package com.jameskbride;
 
-import java.util.*;
-
-import static com.jameskbride.CoinAware.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CoinRegister implements CoinAware {
 
+    private final List<String> insertedCoins;
     private double total;
     private Map<String, Double> coinMap;
 
     public CoinRegister() {
         total = 0;
         initializeCoinMap();
+        this.insertedCoins = new ArrayList<>();
     }
 
     public double getTotal() {
@@ -20,6 +23,7 @@ public class CoinRegister implements CoinAware {
 
     public void addValue(String value) {
         this.total = total + coinMap.get(value);
+        insertedCoins.add(value);
     }
 
     private void initializeCoinMap() {
@@ -61,5 +65,9 @@ public class CoinRegister implements CoinAware {
 
     private int calculateChange(Double cost) {
         return (int) (Math.ceil((total - cost) * 100));
+    }
+
+    public List<String> returnCoins() {
+        return insertedCoins;
     }
 }

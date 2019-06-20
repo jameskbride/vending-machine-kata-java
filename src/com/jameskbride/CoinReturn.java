@@ -21,4 +21,8 @@ public class CoinReturn {
     public void clear() {
         this.returnedCoins.clear();
     }
+
+    public void addAll(List<String> coins) {
+        this.returnedCoins.addAll(coins);
+    }
 }

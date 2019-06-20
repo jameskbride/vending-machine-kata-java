@@ -74,4 +74,16 @@ public class CoinRegisterTest {
         assertEquals(3, change.size());
         assertTrue(change.containsAll(Arrays.asList(QUARTER, DIME, NICKEL)));
     }
+
+    @Test
+    public void givenCoinsHaveBeenAddedWhenTheCoinsAreReturnedThenAllCoinsAreReturned() {
+        coinRegister.addValue(QUARTER);
+        coinRegister.addValue(DIME);
+        coinRegister.addValue(NICKEL);
+
+        List<String> coins = coinRegister.returnCoins();
+
+        assertEquals(3, coins.size());
+        assertTrue(coins.containsAll(Arrays.asList(QUARTER, DIME, NICKEL)));
+    }
 }

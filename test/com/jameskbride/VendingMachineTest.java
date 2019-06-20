@@ -193,12 +193,12 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void givenCoinsInTheCoinReturnWhenTheReturnCoinsButtonIsPressedThenTheCoinReturnIsCleared() {
+    public void givenCoinsInTheRegisterWhenTheReturnCoinsButtonIsPressedThenThenCoinsArePlacedInTheCoinReturn() {
         vendingMachine.insertCoin(QUARTER);
         vendingMachine.insertCoin(INVALID_COIN);
 
         vendingMachine.returnCoins();
 
-        assertTrue(vendingMachine.coinReturn().isEmpty());
+        assertTrue(vendingMachine.coinReturn().containsAll(Arrays.asList(QUARTER, INVALID_COIN)));
     }
 }
