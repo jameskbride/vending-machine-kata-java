@@ -37,11 +37,8 @@ public class VendingMachine implements CoinAware {
     public void vend(String chips) {
         Double productCost = productInventory.getProductCost(chips);
         if (coinRegister.hasSufficientFunds(productCost)) {
+            coinReturn.addAll(coinRegister.makeChange(productCost));
             display.setThankYou(true);
-            List<String> change = coinRegister.makeChange(productCost);
-            for (String coin : change) {
-                coinReturn.add(coin);
-            }
             display.setRequestedAmount(0);
             return;
         }
