@@ -8,14 +8,18 @@ public class CoinReturn {
     private final List<String> returnedCoins;
 
     public CoinReturn() {
-        this.returnedCoins = new ArrayList<String>();
+        this.returnedCoins = new ArrayList<>();
     }
     public void add(String coin) {
         this.returnedCoins.add(coin);
     }
 
-    public List<String> getReturnedCoins() {
-        return returnedCoins;
+    public List<String> returnCoins() {
+        List<String> coins = new ArrayList<>(this.returnedCoins);
+
+        this.returnedCoins.clear();
+
+        return coins;
     }
 
     public void clear() {

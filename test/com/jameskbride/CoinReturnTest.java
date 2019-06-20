@@ -24,14 +24,14 @@ public class CoinReturnTest {
 
         coinReturn.clear();
 
-        assertTrue(coinReturn.getReturnedCoins().isEmpty());
+        assertTrue(coinReturn.returnCoins().isEmpty());
     }
 
     @Test
     public void whenMultipleCoinsAreAddedThenTheyAreAvailableInTheCoinReturn() {
         coinReturn.addAll(Arrays.asList(QUARTER, DIME, NICKEL));
 
-        List<String> coins = coinReturn.getReturnedCoins();
+        List<String> coins = coinReturn.returnCoins();
 
         assertEquals(3, coins.size());
         assertTrue(coins.containsAll(Arrays.asList(QUARTER, DIME, NICKEL)));

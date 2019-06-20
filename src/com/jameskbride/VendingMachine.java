@@ -31,7 +31,7 @@ public class VendingMachine implements CoinAware {
     }
 
     public List<String> coinReturn() {
-        return coinReturn.getReturnedCoins();
+        return coinReturn.returnCoins();
     }
 
     public void vend(String chips) {

@@ -211,4 +211,15 @@ public class VendingMachineTest {
 
         assertEquals("INSERT COIN", vendingMachine.display());
     }
+
+    @Test
+    public void givenCoinsInTheRegisterHaveBeenReturnedWhenTheCoinReturnIsCheckedTwiceThenTheCoinsAreNotAvailableTheSecondTime() {
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.insertCoin(INVALID_COIN);
+
+        vendingMachine.returnCoins();
+        vendingMachine.coinReturn();
+
+        assertTrue(vendingMachine.coinReturn().isEmpty());
+    }
 }
