@@ -6,6 +6,7 @@ import java.util.Map;
 public class ProductInventory {
 
     private Map<String,Double> productMap;
+    private boolean inStock;
 
     public ProductInventory() {
         initializeProductMap();
@@ -23,10 +24,11 @@ public class ProductInventory {
     }
 
     public void addProduct(String product) {
+        this.inStock = true;
 
     }
 
     public boolean isInStock(String product) {
-        return true;
+        return inStock;
     }
 }
