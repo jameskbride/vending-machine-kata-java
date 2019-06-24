@@ -4,6 +4,7 @@ public class Display {
     private double requestedAmount;
     private boolean insufficientFunds;
     private boolean thankYou;
+    private boolean soldOut;
 
     public String emptyMessage() {
         return "INSERT COIN";
@@ -26,7 +27,15 @@ public class Display {
             message = emptyMessage();
         }
 
-        return formatForThankYou(message);
+        return formatForSoldOut(formatForThankYou(message));
+    }
+
+    private String formatForSoldOut(String toBeFormatted) {
+        if (this.soldOut) {
+            return "SOLD OUT";
+        }
+
+        return toBeFormatted;
     }
 
     private String formatForThankYou(String formatAmount) {
@@ -52,5 +61,9 @@ public class Display {
 
     public void setThankYou(boolean thankYou) {
         this.thankYou = thankYou;
+    }
+
+    public void setSoldOut(boolean soldOut) {
+        this.soldOut = soldOut;
     }
 }

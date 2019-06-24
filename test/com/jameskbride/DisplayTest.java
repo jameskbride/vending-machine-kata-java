@@ -2,6 +2,7 @@ package com.jameskbride;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.omg.PortableInterceptor.DISCARDING;
 
 import static org.junit.Assert.*;
 
@@ -52,4 +53,19 @@ public class DisplayTest {
         assertEquals("THANK YOU", display.displayFormattedAmount());
     }
 
+    @Test
+    public void givenSoldOutHasBeenSetWhenTheRequestedAmountIsDisplayedThenItDisplaysSoldOut() {
+        display.setSoldOut(true);
+
+        assertEquals("SOLD OUT", display.displayFormattedAmount());
+    }
+    
+    @Test
+    public void givenSoldOutIsFalseWhenTheRequestedAmountIsDisplayedThenItIsFormatted() {
+        display.setSoldOut(false);
+
+        display.setRequestedAmount(0.50);
+
+        assertEquals("$0.50", display.displayFormattedAmount());
+    }
 }
