@@ -21,4 +21,12 @@ public class ProductInventory {
     public Double getProductCost(String product) {
         return productMap.get(product);
     }
+
+    public void addProduct(String product) {
+
+    }
+
+    public boolean isInStock(String product) {
+        return true;
+    }
 }
