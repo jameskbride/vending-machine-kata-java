@@ -3,11 +3,11 @@ package com.jameskbride;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.jameskbride.Products.*;
+
 public class ProductInventory {
 
-    public static final String CHIPS = "CHIPS";
     private Map<String,Product> productMap;
-    private boolean inStock;
 
     public ProductInventory() {
         initializeProductMap();
@@ -15,9 +15,9 @@ public class ProductInventory {
 
     private void initializeProductMap() {
         productMap = new HashMap<>();
-        productMap.put("CHIPS", new Product("CHIPS", 0.50));
-        productMap.put("COLA", new Product("COLA", 1.00));
-        productMap.put("CANDY", new Product("CANDY", 0.65));
+        productMap.put(CHIPS, new Product(CHIPS, 0.50));
+        productMap.put(COLA, new Product(COLA, 1.00));
+        productMap.put(CANDY, new Product(CANDY, 0.65));
     }
 
     public Double getProductCost(String product) {

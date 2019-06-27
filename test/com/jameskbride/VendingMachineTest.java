@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.jameskbride.CoinAware.*;
+import static com.jameskbride.Products.*;
 import static com.jameskbride.VendingMachine.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -20,9 +22,9 @@ public class VendingMachineTest {
     @Before
     public void setUp() {
         vendingMachine = new VendingMachine();
-        vendingMachine.addProduct("CHIPS");
-        vendingMachine.addProduct("CANDY");
-        vendingMachine.addProduct("COLA");
+        vendingMachine.addProduct(CHIPS);
+        vendingMachine.addProduct(CANDY);
+        vendingMachine.addProduct(COLA);
     }
 
     @Test
@@ -32,21 +34,21 @@ public class VendingMachineTest {
 
     @Test
     public void givenANickelItDisplaysFiveCents() {
-        vendingMachine.insertCoin("NICKEL");
+        vendingMachine.insertCoin(NICKEL);
 
         assertEquals("$0.05", vendingMachine.display());
     }
 
     @Test
     public void givenADimeItDisplaysTenCents() {
-        vendingMachine.insertCoin("DIME");
+        vendingMachine.insertCoin(DIME);
 
         assertEquals("$0.10", vendingMachine.display());
     }
 
     @Test
     public void givenAQuarterItDisplaysTwentyFiveCents() {
-        vendingMachine.insertCoin("QUARTER");
+        vendingMachine.insertCoin(QUARTER);
 
         assertEquals("$0.25", vendingMachine.display());
     }
@@ -98,14 +100,14 @@ public class VendingMachineTest {
 
     @Test
     public void givenInsufficientFundsWhenColaIsRequestedThenDisplayTheAmountForCola() {
-        vendingMachine.vend("COLA");
+        vendingMachine.vend(COLA);
 
         assertEquals("PRICE $1.00", vendingMachine.display());
     }
 
     @Test
     public void givenInsufficientFundsWhenChipsAreRequestedThenDisplayTheAmountForChips() {
-        vendingMachine.vend("CHIPS");
+        vendingMachine.vend(CHIPS);
 
         assertEquals("PRICE $0.50", vendingMachine.display());
     }
@@ -116,7 +118,7 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(QUARTER);
         vendingMachine.insertCoin(QUARTER);
 
-        vendingMachine.vend("CHIPS");
+        vendingMachine.vend(CHIPS);
 
         assertEquals("THANK YOU", vendingMachine.display());
     }
@@ -127,7 +129,7 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(QUARTER);
         vendingMachine.insertCoin(QUARTER);
 
-        vendingMachine.vend("CHIPS");
+        vendingMachine.vend(CHIPS);
         vendingMachine.display();
 
         assertEquals("INSERT COIN", vendingMachine.display());
@@ -144,7 +146,7 @@ public class VendingMachineTest {
 
     @Test
     public void givenInsufficientFundsWhenCandyIsRequestedThenDisplayTheAmountForCandy() {
-        vendingMachine.vend("CANDY");
+        vendingMachine.vend(CANDY);
 
         assertEquals("PRICE $0.65", vendingMachine.display());
     }
@@ -155,7 +157,7 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(QUARTER);
         vendingMachine.insertCoin(QUARTER);
 
-        vendingMachine.vend("CANDY");
+        vendingMachine.vend(CANDY);
 
         assertEquals("THANK YOU", vendingMachine.display());
     }
@@ -166,7 +168,7 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(QUARTER);
         vendingMachine.insertCoin(QUARTER);
 
-        vendingMachine.vend("CANDY");
+        vendingMachine.vend(CANDY);
         vendingMachine.display();
 
         assertEquals("INSERT COIN", vendingMachine.display());
@@ -178,7 +180,7 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(QUARTER);
         vendingMachine.insertCoin(QUARTER);
 
-        vendingMachine.vend("CANDY");
+        vendingMachine.vend(CANDY);
 
         assertTrue(vendingMachine.coinReturn().contains(DIME));
     }
@@ -190,7 +192,7 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(QUARTER);
         vendingMachine.insertCoin(QUARTER);
 
-        vendingMachine.vend("CHIPS");
+        vendingMachine.vend(CHIPS);
 
         assertTrue(vendingMachine.coinReturn().containsAll(Arrays.asList(QUARTER, QUARTER)));
     }

@@ -3,7 +3,7 @@ package com.jameskbride;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.jameskbride.ProductInventory.*;
+import static com.jameskbride.Products.*;
 import static org.junit.Assert.*;
 
 public class ProductInventoryTest {
@@ -41,7 +41,7 @@ public class ProductInventoryTest {
     public void givenAProductHasBeenAddedWhenAnotherProductIsRequestedThenItIsOutOfStock() {
         productInventory.addProduct(CHIPS);
 
-        assertFalse(productInventory.isInStock("CANDY"));
+        assertFalse(productInventory.isInStock(CANDY));
     }
 
     @Test
