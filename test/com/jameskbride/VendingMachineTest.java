@@ -242,4 +242,13 @@ public class VendingMachineTest {
         vendingMachine.display();
         assertEquals("INSERT COIN", vendingMachine.display());
     }
+
+    @Test
+    public void givenMoneyInsertedAndAProductIsOutOfStockWhenItIsVendedThenItDisplaysTheInsertedAmountOnTheSecondDisplay() {
+        vendingMachine.insertCoin(QUARTER);
+        vendingMachine.vend("INVALID");
+
+        vendingMachine.display();
+        assertEquals("$0.25", vendingMachine.display());
+    }
 }
