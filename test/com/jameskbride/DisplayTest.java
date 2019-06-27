@@ -59,7 +59,7 @@ public class DisplayTest {
 
         assertEquals("SOLD OUT", display.displayFormattedAmount());
     }
-    
+
     @Test
     public void givenSoldOutIsFalseWhenTheRequestedAmountIsDisplayedThenItIsFormatted() {
         display.setSoldOut(false);

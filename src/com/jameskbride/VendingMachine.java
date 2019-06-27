@@ -34,20 +34,29 @@ public class VendingMachine implements CoinAware {
         return coinReturn.returnCoins();
     }
 
-    public void vend(String chips) {
-        Double productCost = productInventory.getProductCost(chips);
-        if (coinRegister.hasSufficientFunds(productCost)) {
-            coinReturn.addAll(coinRegister.makeChange(productCost));
-            display.setThankYou(true);
-            display.setRequestedAmount(0);
+    public void vend(String product) {
+        if (productInventory.isInStock(product)) {
+            Double productCost = productInventory.getProductCost(product);
+            if (coinRegister.hasSufficientFunds(productCost)) {
+                coinReturn.addAll(coinRegister.makeChange(productCost));
+                display.setThankYou(true);
+                display.setRequestedAmount(0);
+                return;
+            }
+            display.setInsufficientFunds(true);
+            display.setRequestedAmount(productCost);
             return;
         }
-        display.setInsufficientFunds(true);
-        display.setRequestedAmount(productCost);
+
+        display.setSoldOut(true);
     }
 
     public void returnCoins() {
         coinReturn.addAll(coinRegister.returnCoins());
         display.setRequestedAmount(0);
+    }
+
+    public void addProduct(String product) {
+        productInventory.addProduct(product);
     }
 }

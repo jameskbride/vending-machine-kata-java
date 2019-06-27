@@ -20,6 +20,9 @@ public class VendingMachineTest {
     @Before
     public void setUp() {
         vendingMachine = new VendingMachine();
+        vendingMachine.addProduct("CHIPS");
+        vendingMachine.addProduct("CANDY");
+        vendingMachine.addProduct("COLA");
     }
 
     @Test
@@ -221,5 +224,12 @@ public class VendingMachineTest {
         vendingMachine.coinReturn();
 
         assertTrue(vendingMachine.coinReturn().isEmpty());
+    }
+
+    @Test
+    public void givenAProductIsOutOfStockWhenItIsVendedThenItDisplaysSOLD_OUT() {
+        vendingMachine.vend("INVALID");
+
+        assertEquals("SOLD OUT", vendingMachine.display());
     }
 }

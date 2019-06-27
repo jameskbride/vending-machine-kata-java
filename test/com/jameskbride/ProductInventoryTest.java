@@ -32,7 +32,7 @@ public class ProductInventoryTest {
         productInventory.addProduct(CHIPS);
         productInventory.addProduct(CHIPS);
 
-        productInventory.release("CHIPS");
+        productInventory.release(CHIPS);
 
         assertTrue(productInventory.isInStock(CHIPS));
     }
@@ -42,5 +42,10 @@ public class ProductInventoryTest {
         productInventory.addProduct(CHIPS);
 
         assertFalse(productInventory.isInStock("CANDY"));
+    }
+
+    @Test
+    public void aProductIsNotInStockIfInventoryDoesNotKnowAboutIt() {
+        assertFalse(productInventory.isInStock("POP ROCKS"));
     }
 }

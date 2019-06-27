@@ -29,6 +29,10 @@ public class ProductInventory {
     }
 
     public boolean isInStock(String product) {
+        if (!this.productMap.containsKey(product)) {
+            return false;
+        }
+
         return this.productMap.get(product).getQuantity() > 0;
     }
 
