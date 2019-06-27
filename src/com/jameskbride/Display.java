@@ -6,8 +6,10 @@ public class Display {
     private boolean thankYou;
     private boolean soldOut;
 
+    public static final String INSERT_COIN = "INSERT COIN";
+
     public String emptyMessage() {
-        return "INSERT COIN";
+        return INSERT_COIN;
     }
 
     public String formatAmount(double amount) {

@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.omg.PortableInterceptor.DISCARDING;
 
+import static com.jameskbride.Display.INSERT_COIN;
 import static org.junit.Assert.*;
 
 public class DisplayTest {
@@ -32,7 +33,7 @@ public class DisplayTest {
 
     @Test
     public void givenTheRequestedAmountIsZeroThenItDisplaysInsertCoin() {
-        assertEquals("INSERT COIN", display.displayFormattedAmount());
+        assertEquals(INSERT_COIN, display.displayFormattedAmount());
     }
 
     @Test

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.jameskbride.CoinAware.*;
+import static com.jameskbride.Display.*;
 import static com.jameskbride.Products.*;
 import static com.jameskbride.VendingMachine.*;
 import static org.junit.Assert.assertEquals;
@@ -29,7 +30,7 @@ public class VendingMachineTest {
 
     @Test
     public void givenNoCoinsAreInsertedThenItDisplaysINSERT_COIN() {
-        assertEquals("INSERT COIN", vendingMachine.display());
+        assertEquals(INSERT_COIN, vendingMachine.display());
     }
 
     @Test
@@ -66,7 +67,7 @@ public class VendingMachineTest {
     public void givenAnInvalidCoinHasBeenInsertedThenItDisplaysINSERT_COIN() {
         vendingMachine.insertCoin(INVALID_COIN);
 
-        assertEquals("INSERT COIN", vendingMachine.display());
+        assertEquals(INSERT_COIN, vendingMachine.display());
     }
 
     @Test
@@ -132,7 +133,7 @@ public class VendingMachineTest {
         vendingMachine.vend(CHIPS);
         vendingMachine.display();
 
-        assertEquals("INSERT COIN", vendingMachine.display());
+        assertEquals(INSERT_COIN, vendingMachine.display());
     }
 
     @Test
@@ -171,7 +172,7 @@ public class VendingMachineTest {
         vendingMachine.vend(CANDY);
         vendingMachine.display();
 
-        assertEquals("INSERT COIN", vendingMachine.display());
+        assertEquals(INSERT_COIN, vendingMachine.display());
     }
 
     @Test
@@ -214,7 +215,7 @@ public class VendingMachineTest {
 
         vendingMachine.returnCoins();
 
-        assertEquals("INSERT COIN", vendingMachine.display());
+        assertEquals(INSERT_COIN, vendingMachine.display());
     }
 
     @Test
@@ -240,7 +241,7 @@ public class VendingMachineTest {
         vendingMachine.vend("INVALID");
 
         vendingMachine.display();
-        assertEquals("INSERT COIN", vendingMachine.display());
+        assertEquals(INSERT_COIN, vendingMachine.display());
     }
 
     @Test
