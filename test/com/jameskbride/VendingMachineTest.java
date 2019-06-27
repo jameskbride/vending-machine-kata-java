@@ -234,4 +234,12 @@ public class VendingMachineTest {
 
         assertEquals("SOLD OUT", vendingMachine.display());
     }
+
+    @Test
+    public void givenNoMoneyAndAProductIsOutOfStockWhenItIsVendedThenItDisplaysINSERT_COINOnTheSecondDisplay() {
+        vendingMachine.vend("INVALID");
+
+        vendingMachine.display();
+        assertEquals("INSERT COIN", vendingMachine.display());
+    }
 }

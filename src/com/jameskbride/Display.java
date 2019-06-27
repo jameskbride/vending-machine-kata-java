@@ -32,6 +32,7 @@ public class Display {
 
     private String formatForSoldOut(String toBeFormatted) {
         if (this.soldOut) {
+            this.soldOut = false;
             return "SOLD OUT";
         }
 
