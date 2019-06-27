@@ -1,12 +1,15 @@
 package com.jameskbride;
 
 public class Display {
+    public static final String THANK_YOU = "THANK YOU";
+    public static final String INSERT_COIN = "INSERT COIN";
+    public static final String SOLD_OUT = "SOLD OUT";
+
     private double requestedAmount;
     private boolean insufficientFunds;
     private boolean thankYou;
     private boolean soldOut;
 
-    public static final String INSERT_COIN = "INSERT COIN";
 
     public String emptyMessage() {
         return INSERT_COIN;
@@ -35,7 +38,7 @@ public class Display {
     private String formatForSoldOut(String toBeFormatted) {
         if (this.soldOut) {
             this.soldOut = false;
-            return "SOLD OUT";
+            return SOLD_OUT;
         }
 
         return toBeFormatted;
@@ -44,7 +47,7 @@ public class Display {
     private String formatForThankYou(String formatAmount) {
         if(thankYou) {
             this.thankYou = false;
-            return "THANK YOU";
+            return THANK_YOU;
         }
 
         return formatAmount;

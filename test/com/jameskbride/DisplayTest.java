@@ -2,10 +2,9 @@ package com.jameskbride;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.PortableInterceptor.DISCARDING;
 
-import static com.jameskbride.Display.INSERT_COIN;
-import static org.junit.Assert.*;
+import static com.jameskbride.Display.*;
+import static org.junit.Assert.assertEquals;
 
 public class DisplayTest {
 
@@ -51,14 +50,14 @@ public class DisplayTest {
 
         display.setRequestedAmount(0.50);
 
-        assertEquals("THANK YOU", display.displayFormattedAmount());
+        assertEquals(THANK_YOU, display.displayFormattedAmount());
     }
 
     @Test
     public void givenSoldOutHasBeenSetWhenTheRequestedAmountIsDisplayedThenItDisplaysSoldOut() {
         display.setSoldOut(true);
 
-        assertEquals("SOLD OUT", display.displayFormattedAmount());
+        assertEquals(SOLD_OUT, display.displayFormattedAmount());
     }
 
     @Test

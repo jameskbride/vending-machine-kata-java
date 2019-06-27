@@ -121,7 +121,7 @@ public class VendingMachineTest {
 
         vendingMachine.vend(CHIPS);
 
-        assertEquals("THANK YOU", vendingMachine.display());
+        assertEquals(THANK_YOU, vendingMachine.display());
     }
 
     @Test
@@ -160,7 +160,7 @@ public class VendingMachineTest {
 
         vendingMachine.vend(CANDY);
 
-        assertEquals("THANK YOU", vendingMachine.display());
+        assertEquals(THANK_YOU, vendingMachine.display());
     }
 
     @Test
@@ -233,7 +233,7 @@ public class VendingMachineTest {
     public void givenAProductIsOutOfStockWhenItIsVendedThenItDisplaysSOLD_OUT() {
         vendingMachine.vend("INVALID");
 
-        assertEquals("SOLD OUT", vendingMachine.display());
+        assertEquals(SOLD_OUT, vendingMachine.display());
     }
 
     @Test
